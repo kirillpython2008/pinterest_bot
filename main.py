@@ -6,7 +6,8 @@ from asyncio import run
 import logging
 import sys
 
-from routers.user_routers import link_router
+from routers.user_routers import user_router
+from routers.admin_routers import admin_router
 
 
 async def start_bot():
@@ -15,7 +16,8 @@ async def start_bot():
     bot = Bot(token=getenv("TOKEN"))
     dp = Dispatcher()
 
-    dp.include_router(link_router)
+    dp.include_router(admin_router)
+    dp.include_router(user_router)
 
     logging.basicConfig(level=logging.INFO)
 
